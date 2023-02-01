@@ -1,3 +1,21 @@
 #root {
   color: red;
 }
+
+section {
+  display: flex;
+  flex-direction: column;
+  background-color: grey;
+}
+
+div {
+  width: 100%;
+  background-color: aqua;
+}
+
+div div {
+  background-color: aliceblue;
+}
+div div img {
+  width: 100%;
+}
