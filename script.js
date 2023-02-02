@@ -34,24 +34,34 @@ function makePageForEpisodes(episodeList) {
   countParagraph.innerText = `showing ${episodeList.length} eppisodes`;
   rootElem.appendChild(countParagraph);
 
-  episodeList.forEach((episode) => {
+  // create a container f the divs
+  let section = document.createElement("section");
+  section.classList.add("section");
+
+  /// creat episode and enclose in a dive
+  let eps = episodeList.map((episode) => {
+    const card = document.createElement("div");
     // add the season and episode and name
     const paragrath = document.createElement("p");
     paragrath.textContent = `${makeSeasonAndEpisode(episode)}:${episode.name}`;
-    rootElem.appendChild(paragrath);
+    card.appendChild(paragrath);
 
     // add the image
     const image = document.createElement("img");
     image.src = episode.image.medium;
-    rootElem.appendChild(image);
+    card.appendChild(image);
 
     //add the ...
     const summaryParagraph = document.createElement("p");
     summaryParagraph.innerHTML = episode.summary;
-    rootElem.appendChild(summaryParagraph);
-    rootElem.innerHTML += episode.summary;
+    card.appendChild(summaryParagraph);
+
+    return card;
+    //rootElem.innerHTML += episode.summary;
   });
 
+  section.append(...eps);
+  rootElem.append(section);
   // input ok, key up is ok to get value as event listener
 
   // -- original text --//
@@ -69,20 +79,10 @@ searchInput.addEventListener("input", (event) => {
   console.log(event.target.value);
   const searchString = event.target.value;
   const filteredEpisodes = getAllEpisodes().filter((episode) => {
-    if (episode.summary.includes(searchString)) {
-      return true;
-    }
-    if (episode.name.includes(searchString)) {
-      return true;
-    }
-    return false;
-
-    /*
     return (
-        episode.summary.toLowerCase().includes(searchString) || episode.name.toLowerCase().includes(searchString)
+      episode.summary.toLowerCase().includes(searchString) ||
+      episode.name.toLowerCase().includes(searchString)
     );
-    
-    */
   });
 
   makePageForEpisodes(filteredEpisodes);
