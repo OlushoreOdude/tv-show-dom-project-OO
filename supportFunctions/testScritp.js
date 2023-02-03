@@ -38,28 +38,96 @@ function makeSectionForEpisodes(episodesArr) {
 
   // clear out the rootElement's html before we add the new stuff
   rootElem.innerHTML = "";
-
+  //create paragrthe with total number of episodes shown
+  const countEpsShown = document.createElement("p");
+  countEpsShown.innerText = `showing ${episodesArr.length} eppisodes`;
+  rootElem.appendChild(countEpsShown);
   // -- expect to return an array of section elem --//
   //\\ --receveed array of secitons
   //\\ -- close test delete and moved to workingTest.
 
-  let section = createElement("section", newObj2(sectionElemArr), "test");
+  let section = createElement("section", newObj2(sectionElemArr));
+  section.classList.add("contain-all-fliped");
   // -- expect to return an array of ep cards --//
   let episodeCards = episodesArr.map((episode) => {
+    let {
+      id,
+      url,
+      name: epName,
+      season: seasonNumb,
+      number: epNumb,
+      airdate,
+      airtime,
+      airstamp,
+      runtime,
+      image: { medium: mediumImg, original: largeImg },
+      summary,
+      _links: {
+        self: { href: siteLink },
+      },
+    } = episode;
+
     let epId = episodeCode(episode);
     //-- attribute argument must be an  object --//
-    let cardFlipConatainer = createElement("div", newObj2(divElemArr), epId);
+    let flipFuction = function () {
+      console.log(this, 1);
+      this.classList.toggle("hover");
+    };
+    let cardFlipConatainer = createElement("div", newObj2(divElemArr), epId, flipFuction);
     console.log(cardFlipConatainer.classList);
-    cardFlipConatainer.classList = [...cardFlipConatainer.classList, "flip-container"];
+    cardFlipConatainer.classList.add("flip-container");
 
     // --creat and set flipperdiv
     let flipperDiv = createElement("div", newObj2(divElemArr), randomId());
     flipperDiv.classList.add("flipper");
 
     //-- creat fontDiv
-    let frontDiv = createElement("div", newObj2(divElemArr), randomId(), "front");
+    let frontDiv = createElement("div", newObj2(divElemArr), randomId());
+    frontDiv.classList.add("front");
+
+    // -- creat frontDive head, body and button
+    let frontDivHead = createElement("div", newObj2(divElemArr), randomId(), "cardTitle");
+
+    frontDivHead.innerText = `${epId} ${epName}`;
+    let forntDivBody = createElement("div", newObj2(divElemArr), randomId());
+    // --create image
+    let fdbImage = createElement("img", {
+      id: randomId(),
+      class: ["img-Class"],
+      src: mediumImg,
+      alt: epName,
+    });
+
+    forntDivBody.appendChild(fdbImage);
+    let frontDivText = createElement("div", newObj2(divElemArr), "card Text", randomId());
+    frontDivText.classList.add("summary");
+    frontDivText.innerHTML = `${summary}`;
+    let frontDivLink = createElement("p", {
+      id: randomId(),
+      innerText: `click here for more info`,
+    });
+
+    //-- append fronDiv internal section to fronDiv
+    frontDiv.append(frontDivHead, forntDivBody, frontDivText, frontDivLink);
+
     //-- creat backDiv
     let backDiv = createElement("div", newObj2(divElemArr), randomId(), "back");
+    backDiv.classList.add("back");
+    backDiv.innerText = `
+      episode ${id},  
+      name: ${epName},
+      Season: ${seasonNumb},
+      Episode: ${epNumb},
+      airdate: ${airdate},
+      airtime: ${airtime},
+      runtime:${runtime},
+`;
+    let backDivLink = createElement("a", {
+      href: url,
+      id: randomId(),
+      innerText: `more info at tvMaze`,
+    });
+    backDiv.append(backDivLink);
     //-- append front and back div to flipperDiv
     flipperDiv.append(frontDiv, backDiv);
 
