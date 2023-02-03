@@ -52,6 +52,20 @@ function makeSectionForEpisodes(episodesArr) {
     console.log(cardFlipConatainer.classList);
     cardFlipConatainer.classList = [...cardFlipConatainer.classList, "flip-container"];
 
+    // --creat and set flipperdiv
+    let flipperDiv = createElement("div", newObj2(divElemArr), randomId());
+    flipperDiv.classList.add("flipper");
+
+    //-- creat fontDiv
+    let frontDiv = createElement("div", newObj2(divElemArr), randomId(), "front");
+    //-- creat backDiv
+    let backDiv = createElement("div", newObj2(divElemArr), randomId(), "back");
+    //-- append front and back div to flipperDiv
+    flipperDiv.append(frontDiv, backDiv);
+
+    //-- append flipper div to cardFlipCon..
+    cardFlipConatainer.append(flipperDiv);
+
     return cardFlipConatainer;
   });
 
