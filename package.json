@@ -1,0 +1,21 @@
+{
+  "name": "tv-show-dom-project-oo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "episodes.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OlushoreOdude/tv-show-dom-project-OO.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OlushoreOdude/tv-show-dom-project-OO/issues"
+  },
+  "homepage": "https://github.com/OlushoreOdude/tv-show-dom-project-OO#readme",
+  "type": "module"
+}
