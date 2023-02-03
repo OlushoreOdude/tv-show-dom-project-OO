@@ -39,20 +39,29 @@ function makeSectionForEpisodes(episodesArr) {
   // clear out the rootElement's html before we add the new stuff
   rootElem.innerHTML = "";
 
-  // -- expect to return an array of ep cards --//
-  let section2 = episodesArr.map((episode) => {
-    let epId = episodeCode(episode);
-    let section = createElement("section", newObj2(sectionElemArr), "test", epId);
+  // -- expect to return an array of section elem --//
+  //\\ --receveed array of secitons
+  //\\ -- close test delete and moved to workingTest.
 
-    episodeCards = episodesArr.map((episode) => {});
-    // can set inner text manually ike below
-    // not sure why its not working in fuct
-    //section.innerText ="test";
-    return section;
+  let section = createElement("section", newObj2(sectionElemArr), "test");
+  // -- expect to return an array of ep cards --//
+  let episodeCards = episodesArr.map((episode) => {
+    let epId = episodeCode(episode);
+    //-- attribute argument must be an  object --//
+    let cardFlipConatainer = createElement("div", newObj2(divElemArr), epId);
+    console.log(cardFlipConatainer.classList);
+    cardFlipConatainer.classList = [...cardFlipConatainer.classList, "flip-container"];
+
+    return cardFlipConatainer;
   });
 
-  // -- append ep cards to root
-  rootElem.append(...section2);
+  section.append(...episodeCards);
+  // can set inner text manually ike below
+  // not sure why its not working in fuct
+  //section.innerText ="test";
+
+  // -- append ep cards to sectin
+  rootElem.append(section);
   console.log(rootElem);
 }
 

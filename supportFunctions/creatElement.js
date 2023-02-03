@@ -5,7 +5,7 @@ export function createElement(type, ...args) {
   //--set potential known parameter variables -//
   let attributes, eventHandler, inrText, rID;
   // tesp 2 can be deleted
-  let tesp = 2;
+  //let tesp = 2;
   // -- loop over argumets array
   //-- set variable to parameter based on test --//
   args.forEach((el) => {
@@ -38,7 +38,8 @@ export function createElement(type, ...args) {
     console.log(key === "innerText" || inrText);
     console.log(key === "innerText");
     console.log(key === inrText, "inerText-test");
-    console.log(key === "id" && !!tesp);
+    console.log(key === "id");
+    console.log(key === "id" || (key === "id" && !!rID));
     // may be better to set inner text content on outside
     if (key === "class") {
       element.classList.add(...attributes[key]);
@@ -48,8 +49,8 @@ export function createElement(type, ...args) {
       //-- set the vallue to inrText
       //Note: only using || (or) operator can create duplicate values
       element[key] = inrText;
-    } else if (key === "id" && !!rID) {
-      element[key] = rID;
+    } else if (key === "id" || (key === "id" && !!rID)) {
+      element[key] = rID ? rID : attributes[key];
     } else {
       //-- this takes care or alt, src, and other keys
       element[key] = attributes[key];
@@ -69,6 +70,8 @@ export function createElement(type, ...args) {
   if (!element.innerText) {
     element.innerText = inrText ? inrText : null;
   }
+  // note: null appeas as litteral empty space in the browser
+  console.log(element.innerText);
   console.log(element);
   //-- if evenHandler included add event hanler to element
   if (eventHandler) {
