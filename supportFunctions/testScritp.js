@@ -43,6 +43,8 @@ function makeSectionForEpisodes(episodesArr) {
   let section2 = episodesArr.map((episode) => {
     let epId = episodeCode(episode);
     let section = createElement("section", newObj2(sectionElemArr), "test", epId);
+
+    episodeCards = episodesArr.map((episode) => {});
     // can set inner text manually ike below
     // not sure why its not working in fuct
     //section.innerText ="test";
