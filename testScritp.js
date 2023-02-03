@@ -70,11 +70,11 @@ function makeSectionForEpisodes(episodesArr) {
     let epId = episodeCode(episode);
     //-- attribute argument must be an  object --//
     let flipFuction = function () {
-      console.log(this, 1);
+      // console.log(this, 1);
       this.classList.toggle("hover");
     };
     let cardFlipConatainer = createElement("div", newObj2(divElemArr), epId, flipFuction);
-    console.log(cardFlipConatainer.classList);
+    // console.log(cardFlipConatainer.classList);
     cardFlipConatainer.classList.add("flip-container");
 
     // --creat and set flipperdiv
@@ -144,7 +144,7 @@ function makeSectionForEpisodes(episodesArr) {
 
   // -- append ep cards to sectin
   rootElem.append(section);
-  console.log(rootElem);
+  // console.log(rootElem);
 }
 
 //-- function takes epidode object and retruns stirng --//

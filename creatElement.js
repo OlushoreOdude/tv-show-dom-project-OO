@@ -43,7 +43,7 @@ export function createElement(type, ...args) {
       element[key] = attributes[key];
     }
   }
-  console.log(element.id);
+  // console.log(element.id);
   if (!element.id) {
     element.id = null;
   }
@@ -53,13 +53,13 @@ export function createElement(type, ...args) {
     element.alt = 
   }
 */
-  console.log(element.innerText);
+  // console.log(element.innerText);
   if (!element.innerText) {
     element.innerText = inrText ? inrText : null;
   }
   // note: null appeas as litteral empty space in the browser
-  console.log(element.innerText);
-  console.log(element);
+  // console.log(element.innerText);
+  // console.log(element);
   //-- if evenHandler included add event hanler to element
   if (eventHandler) {
     element.addEventListener("click", eventHandler);
