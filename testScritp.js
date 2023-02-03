@@ -1,7 +1,7 @@
 //-- crate element fnciton takes in a type, object of attributes, eventhanler, innerText and rid --//
 // if you provide it with a new Id it will replace the one set in the element creataion, other wise it will be a random id,
 import { createElement } from "./creatElement.js";
-import { getAllEpisodes, getOneEpisode } from "./CopyEpisodes.js";
+import { getAllEpisodes, getOneEpisode } from "./copyEpisodes.js";
 import { getOneShow, getAllShows } from "./copyShows.js";
 
 //-- functions for creating an object -- //
@@ -153,23 +153,6 @@ const episodeCode = ({ season, number }) => {
   let epNum = number < 10 ? `0${number}` : number;
   return `S${seasonNum}E${epNum}`;
 };
-
-//-- function takes epidode object and destructures --//
-////--- could call, function getEpisodesValue
-function getEpisodeValues({
-  id,
-  url,
-  name: epName,
-  season: seasonNumb,
-  number: epNumb,
-  airdate,
-  airtime,
-  airstamp,
-  runtime,
-  image: { medium: mediumImg, original: largeImg },
-  summary,
-  links,
-}) {}
 
 // -- get input element value, search epSummary by value, repopulate section with filtered value --//
 const searchInput = document.getElementById("search-input");

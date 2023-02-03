@@ -1,11 +1,7 @@
 export function createElement(type, ...args) {
-  //console.log(arguments);
-  //console.log(args);
-
   //--set potential known parameter variables -//
   let attributes, eventHandler, inrText, rID;
-  // tesp 2 can be deleted
-  //let tesp = 2;
+
   // -- loop over argumets array
   //-- set variable to parameter based on test --//
   args.forEach((el) => {
@@ -20,10 +16,7 @@ export function createElement(type, ...args) {
     } else {
       console.log("parameter not found");
     }
-    //-- console log in kloop was creating undefined
-    //console.log(inrText, rID, "intx");
   });
-  console.log(inrText, rID, "intx");
 
   //-- create element with type parameter --//
   let element = document.createElement(type);
@@ -34,12 +27,6 @@ export function createElement(type, ...args) {
   //--e.g innerText rID
   //-- need to use bang operator to use double bang to convert truthey to true
   for (let key in attributes) {
-    console.log(key, "key");
-    console.log(key === "innerText" || inrText);
-    console.log(key === "innerText");
-    console.log(key === inrText, "inerText-test");
-    console.log(key === "id");
-    console.log(key === "id" || (key === "id" && !!rID));
     // may be better to set inner text content on outside
     if (key === "class") {
       element.classList.add(...attributes[key]);
