@@ -9,7 +9,7 @@ let tvMazeData = fetch(urlTvmaze)
   .then((data) => {
     console.log("from the promis chain");
     console.log(data);
-    //console.log(data.results[0].name.first);
+
     if (!data) {
       throw new Error("something went wrong");
     }
